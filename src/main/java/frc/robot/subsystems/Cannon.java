@@ -18,9 +18,7 @@ public class Cannon extends SubsystemBase {
   private Compressor firingMechanism;
 
   private Boolean _armed = false;
-  private Boolean _rotateLeft = false;
-  private Boolean _rotateRight = false;
-  private Boolean _isNowRotating = false;
+
   /** */
   public Cannon() {
 
