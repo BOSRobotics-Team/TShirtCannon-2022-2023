@@ -20,7 +20,7 @@ public class RotateMagazine extends InstantCommand {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_cannon.rotateLeft();
+    m_cannon.rotateCannon(0.2);
   }
 
   // Called once the command ends or is interrupted.

@@ -19,5 +19,8 @@ public class Constants {
   public static final int kID_LFollowDrive = 2; // SparkMAX
   public static final int kID_RMasterDrive = 3; // SparkMAX
   public static final int kID_RFollowDrive = 4; // SparkMAX
-  public static final int kID_CANdle = 0;
+  public static final int kID_CANdle = 20;
+
+  public static final int kID_CannonElevator = 6;
+  public static final int kID_CannonRotator = 5;
 }
