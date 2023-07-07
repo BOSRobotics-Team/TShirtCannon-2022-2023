@@ -15,7 +15,6 @@ public class Constants {
    * static final int kRightMotor2Port = 3; }
    */
   public static final int kID_LMasterDrive = 1; // SparkMAX
-
   public static final int kID_LFollowDrive = 2; // SparkMAX
   public static final int kID_RMasterDrive = 3; // SparkMAX
   public static final int kID_RFollowDrive = 4; // SparkMAX

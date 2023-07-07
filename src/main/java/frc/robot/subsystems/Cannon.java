@@ -1,7 +1,9 @@
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+
 import edu.wpi.first.wpilibj.Compressor;
 // import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
@@ -12,7 +14,7 @@ import frc.robot.Constants;
 /** */
 public class Cannon extends SubsystemBase {
   private WPI_VictorSPX cannonElevator;
-  private WPI_TalonFX magazineRotator;
+  private CANSparkMax magazineRotator;
   // private DigitalInput leftAlignment;
   // private DigitalInput rightAlignment;
   private Compressor firingMechanism;
@@ -23,7 +25,8 @@ public class Cannon extends SubsystemBase {
   public Cannon() {
 
     cannonElevator = new WPI_VictorSPX(Constants.kID_CannonElevator);
-    magazineRotator = new WPI_TalonFX(Constants.kID_CannonRotator);
+    magazineRotator = new CANSparkMax(Constants.kID_CannonRotator, MotorType.kBrushless);
+    // magazineRotator = new WPI_TalonFX(Constants.kID_CannonRotator);
 
     // leftAlignment = new DigitalInput(0);
     // addChild("LeftAlignment", leftAlignment);
