@@ -13,12 +13,10 @@
             "groupId": "com.ctre.phoenix",
             "artifactId": "api-java",
             "version": "5.30.4"
-            "version": "5.30.4"
         },
         {
             "groupId": "com.ctre.phoenix",
             "artifactId": "wpiapi-java",
-            "version": "5.30.4"
             "version": "5.30.4"
         }
     ],
@@ -26,7 +24,6 @@
         {
             "groupId": "com.ctre.phoenix",
             "artifactId": "cci",
-            "version": "5.30.4",
             "version": "5.30.4",
             "isJar": false,
             "skipInvalidPlatforms": true,
@@ -40,7 +37,6 @@
         {
             "groupId": "com.ctre.phoenix.sim",
             "artifactId": "cci-sim",
-            "version": "5.30.4",
             "version": "5.30.4",
             "isJar": false,
             "skipInvalidPlatforms": true,
@@ -187,7 +183,6 @@
             "groupId": "com.ctre.phoenix",
             "artifactId": "wpiapi-cpp",
             "version": "5.30.4",
-            "version": "5.30.4",
             "libName": "CTRE_Phoenix_WPI",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -203,7 +198,6 @@
             "groupId": "com.ctre.phoenix",
             "artifactId": "api-cpp",
             "version": "5.30.4",
-            "version": "5.30.4",
             "libName": "CTRE_Phoenix",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -218,7 +212,6 @@
         {
             "groupId": "com.ctre.phoenix",
             "artifactId": "cci",
-            "version": "5.30.4",
             "version": "5.30.4",
             "libName": "CTRE_PhoenixCCI",
             "headerClassifier": "headers",
@@ -250,7 +243,6 @@
             "groupId": "com.ctre.phoenix.sim",
             "artifactId": "wpiapi-cpp-sim",
             "version": "5.30.4",
-            "version": "5.30.4",
             "libName": "CTRE_Phoenix_WPISim",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -266,7 +258,6 @@
             "groupId": "com.ctre.phoenix.sim",
             "artifactId": "api-cpp-sim",
             "version": "5.30.4",
-            "version": "5.30.4",
             "libName": "CTRE_PhoenixSim",
             "headerClassifier": "headers",
             "sharedLibrary": true,
@@ -281,7 +272,6 @@
         {
             "groupId": "com.ctre.phoenix.sim",
             "artifactId": "cci-sim",
-            "version": "5.30.4",
             "version": "5.30.4",
             "libName": "CTRE_PhoenixCCISim",
             "headerClassifier": "headers",
