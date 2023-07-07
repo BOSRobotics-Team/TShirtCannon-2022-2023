@@ -1,35 +1,29 @@
 package frc.robot.subsystems;
 
-// import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.Compressor;
 // import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
 // import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 /** */
 public class Cannon extends SubsystemBase {
-  // private Solenoid lights;
-  // private WPI_VictorSPX cannonElevator;
-  // private WPI_VictorSPX magazineRotator;
+  private WPI_VictorSPX cannonElevator;
+  private WPI_TalonFX magazineRotator;
   // private DigitalInput leftAlignment;
   // private DigitalInput rightAlignment;
   private Compressor firingMechanism;
 
   private Boolean _armed = false;
-  private Boolean _rotateLeft = false;
-  private Boolean _rotateRight = false;
-  private Boolean _isNowRotating = false;
-  // private long _blinkLights = -1;
+
   /** */
   public Cannon() {
 
-    // lights = new Solenoid(0, PneumaticsModuleType.CTREPCM, 0);
-    // addChild("Lights", lights);
-
-    // cannonElevator = new WPI_VictorSPX(6);
-
-    // magazineRotator = new WPI_VictorSPX(5);
+    cannonElevator = new WPI_VictorSPX(Constants.kID_CannonElevator);
+    magazineRotator = new WPI_TalonFX(Constants.kID_CannonRotator);
 
     // leftAlignment = new DigitalInput(0);
     // addChild("LeftAlignment", leftAlignment);
@@ -89,24 +83,12 @@ public class Cannon extends SubsystemBase {
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
-  public void rotateLeft() {
-    if (!_isNowRotating) {
-      _rotateLeft = true;
-      _rotateRight = false;
-      // magazineRotator.set(0.2);
-    }
-  }
-
-  public void rotateRight() {
-    if (!_isNowRotating) {
-      _rotateLeft = false;
-      _rotateRight = true;
-      // magazineRotator.set(-0.2);
-    }
+  public void rotateCannon(double speed) {
+    magazineRotator.set(speed);
   }
 
   public void raiseCannon(double speed) {
-    // cannonElevator.set(speed);
+    cannonElevator.set(speed);
   }
 
   public void arm(boolean armed) {
@@ -114,24 +96,13 @@ public class Cannon extends SubsystemBase {
   }
 
   public void fire() {
-    if (_armed && !_isNowRotating && !_rotateLeft && !_rotateRight) {
+    if (_armed && !isMoving()) {
       firingMechanism.enableDigital();
       _armed = false;
     }
   }
 
-  public void lightsOn() {
-    // _blinkLights = -1;
-    // lights.set(true);
-  }
-
-  public void lightsOff() {
-    // _blinkLights = -1;
-    // lights.set(false);
-  }
-
-  public void lightsBlink() {
-    // _blinkLights = 0;
-    // lights.set(true);
-  }
+  public Boolean isMoving() {
+    return false;//(magazineRotator.getStatorCurrent() > 0.001) || (cannonElevator.get() > 0.001);
+  } 
 }
