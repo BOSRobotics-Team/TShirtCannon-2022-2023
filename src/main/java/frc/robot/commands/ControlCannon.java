@@ -33,16 +33,16 @@ public class ControlCannon extends CommandBase {
   public void execute() {
     int pov = m_controller.getPOV();
     if (pov == 0) {
-      m_cannon.raiseCannon(0.4);
+      m_cannon.raiseCannon(-0.4);
       System.out.println("raiseCannon");
     } else if (pov == 90) {
-      m_cannon.rotateCannon(0.2);
+      m_cannon.rotateCannon(-0.2);
       System.out.println("rotateCannon right");
     } else if (pov == 180) {
-      m_cannon.raiseCannon(-0.4);
+      m_cannon.raiseCannon(0.4);
       System.out.println("lowerCannon");
     } else if (pov == 270) {
-      m_cannon.rotateCannon(-0.2);
+      m_cannon.rotateCannon(0.2);
       System.out.println("rotateCannon left");
     } else {
       m_cannon.raiseCannon(0);
