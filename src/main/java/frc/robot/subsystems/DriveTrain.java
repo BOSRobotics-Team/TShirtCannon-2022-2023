@@ -176,8 +176,10 @@ public class DriveTrain extends SubsystemBase {
   }
 
   public void setOutput(double left, double right) {
+    
     double newleft = (_lastLSmoothing + left) / 2.0;
     double newRight = (_lastRSmoothing + right) / 2.0;
+
     _lastLSmoothing = left;
     _lastRSmoothing = right;
 

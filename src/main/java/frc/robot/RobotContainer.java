@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
@@ -97,8 +98,10 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
+    y_Button_Driver.onTrue(Commands.runOnce(() -> m_cannon.rotateCannonRandom(1)));
+
     a_Button_Driver.onTrue(
-        new SequentialCommandGroup(new ArmCannon(this), new LightsArmed(this)));
+        new SequentialCommandGroup(Commands.runOnce(() -> m_cannon.arm(true)), new LightsArmed(this)));
     SmartDashboard.putData("Arm Cannon", new ArmCannon(this));
 
     a_Button_Driver.onFalse(

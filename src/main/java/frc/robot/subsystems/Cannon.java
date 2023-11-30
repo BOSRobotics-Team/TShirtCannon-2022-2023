@@ -1,5 +1,7 @@
 package frc.robot.subsystems;
 
+import java.util.Random;
+
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
@@ -13,20 +15,26 @@ import frc.robot.Constants;
 
 /** */
 public class Cannon extends SubsystemBase {
+  
   private WPI_VictorSPX cannonElevator;
   private CANSparkMax magazineRotator;
   // private DigitalInput leftAlignment;
   // private DigitalInput rightAlignment;
   private Compressor firingMechanism;
 
+  private Random random = new Random();
   private Boolean _armed = false;
 
+  private int _iter = 0;
+  
   /** */
   public Cannon() {
 
     cannonElevator = new WPI_VictorSPX(Constants.kID_CannonElevator);
     magazineRotator = new CANSparkMax(Constants.kID_CannonRotator, MotorType.kBrushless);
     // magazineRotator = new WPI_TalonFX(Constants.kID_CannonRotator);
+    
+    
 
     // leftAlignment = new DigitalInput(0);
     // addChild("LeftAlignment", leftAlignment);
@@ -75,6 +83,12 @@ public class Cannon extends SubsystemBase {
     if (!_armed) {
       firingMechanism.disable();
     }
+
+    if (_iter > 0) {
+      if (--_iter == 0){
+        rotateCannon(0);
+      }
+    }
   }
 
   @Override
@@ -88,6 +102,11 @@ public class Cannon extends SubsystemBase {
 
   public void rotateCannon(double speed) {
     magazineRotator.set(speed);
+  }
+
+  public void rotateCannonRandom(double speed) {
+    rotateCannon(speed - random.nextDouble(speed * 2));
+    _iter = random.nextInt(999);
   }
 
   public void raiseCannon(double speed) {
@@ -107,5 +126,5 @@ public class Cannon extends SubsystemBase {
 
   public Boolean isMoving() {
     return false;//(magazineRotator.getStatorCurrent() > 0.001) || (cannonElevator.get() > 0.001);
-  } 
+  }
 }
